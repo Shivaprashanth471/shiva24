@@ -1,8 +1,8 @@
-name: Build
 on:
   push:
     branches:
-      - master
+      - main        # The default branch
+      - branch-*    # The other branches to be analyzed
   # pull_request:
   #   types: [opened, synchronize, reopened]
 jobs:
