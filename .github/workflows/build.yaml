@@ -2,20 +2,17 @@ on:
   push:
     branches:
       - dev        # The default branch
-      - branch-*    # The other branches to be analyzed
-  # pull_request:
-  #   types: [opened, synchronize, reopened]
+      - branch-* 
+name: Main Workflow
 jobs:
-  sonarcloud:
-    name: SonarCloud
+  sonarQubeTrigger:
+    name: SonarQube Trigger
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_PATH: ${{secrets.SONAR_PATH}}
+    - uses: actions/checkout@master
+    - name: SonarQube Scan
+      uses: kitabisa/sonarqube-action@v1.1.0
+      with:
+        host: ${{ secrets.SONARQUBE_HOST }}
+        login: ${{ secrets.SONAR_TOKEN}}
+        path: ${{secrets.SONAR_PATH}}
