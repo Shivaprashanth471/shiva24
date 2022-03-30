@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@master
     - name: Install npm dependencies
       run: |
-      sonar-scanner -X
+      sonar-scanner 
       -Dsonar.projectKey=shiva 
       -Dsonar.sources=. 
       -Dsonar.host.url=http://3.6.47.66:9000 
