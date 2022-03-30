@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - master        # The default branch
+      - dev        # The default branch
       - branch-*    # The other branches to be analyzed
   # pull_request:
   #   types: [opened, synchronize, reopened]
@@ -18,3 +18,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_PATH: ${{secrets.SONAR_PATH}}
