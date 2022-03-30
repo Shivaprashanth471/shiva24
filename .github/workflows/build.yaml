@@ -14,5 +14,8 @@ jobs:
       uses: kitabisa/sonarqube-action@v1.1.0
       with:
         host: ${{ secrets.SONARQUBE_HOST }}
-        login: ${{ secrets.SONAR_TOKEN}}
-        path: ${{secrets.SONAR_PATH}}
+        token: ${{ secrets.SONAR_TOKEN}}
+        # path: ${{secrets.SONAR_PATH}}
+        key: ${{secrets.SONAR_PROJECTKEY}}
+        login: ${{secrets.SONAR_LOGIN}}
+        password: ${{secrets.SONAR_PASSWORD}}
