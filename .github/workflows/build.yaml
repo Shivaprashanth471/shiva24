@@ -34,7 +34,7 @@ jobs:
     - name: reports
       run: |
         cd reports/*
-        scp -i /* ubuntu@3.6.47.66 /var/www/test1
+        scp -i /* ubuntu@3.6.47.66  home/ubntu/var/www/test1
     - name: checkout to our code 
       uses: actions/checkout@master
     - name: ls
