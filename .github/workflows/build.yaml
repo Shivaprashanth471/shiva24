@@ -43,10 +43,10 @@ jobs:
         DEPLOY_KEY: ${{ secrets.ACL_PEM }}
         ARGS: "-e -c -r --delete"
         SERVER_PORT: 22
-        FOLDER: /home/runner/work/shiva24/shiva24/reports
+        FOLDER: reports
         SERVER_IP: ${{ secrets.ACL_IP }}
         USERNAME: ubuntu
-        SERVER_DESTINATION: /home/ubuntu/var/www/testz
+        SERVER_DESTINATION: /home/ubuntu/var/www/testz/
     - name: checkout to our code 
       uses: actions/checkout@master
     - name: ls
