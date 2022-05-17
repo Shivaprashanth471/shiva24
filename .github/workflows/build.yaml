@@ -34,16 +34,12 @@ jobs:
     - name: reports
       run: |
         cd reports
-
-    - name: building 
-      id: check_folders
-      run: |
-        foldername=reports
+        filename=folder.txt
         cat > $filename
         flag=0
-        while IFS= read -r folder
+        while IFS= read -r file
         do
-          if [[ $folder == reports/* ]]; then
+          if [[ $file == reports/* ]]; then
             if grep -q "reports" "$filename"; then
               echo "already exists"
             else
