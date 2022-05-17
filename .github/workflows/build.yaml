@@ -10,16 +10,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Install npm dependencies
-      run: |
-        git clone "https://"$my_pat"@github.com/tericsoft-services/vitawerks_automationh.git"
+    # - name: Install npm dependencies
+    #   run: npm install
 
- 
     - name: Check out my other private repo
       uses: actions/checkout@master
       with:
         repository: tericsoft-services/vitawerks_automation 
-        token: ${{ secrets.my_pat }}    
+        token: ${{ secrets.my_pat }}
+    - name: list
+      run: ls 
+
+        
+    
+
+ 
+    # - name: Check out my other private repo
+    #   uses: actions/checkout@master
+    #   with:
+    #     repository: tericsoft-services/vitawerks_automation 
+    #     token: ${{ secrets.my_pat }}    
            
     # - uses: actions/checkout@master
     #   with:
