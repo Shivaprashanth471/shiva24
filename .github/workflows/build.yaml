@@ -34,9 +34,9 @@ jobs:
          cd reports
          ls
     - name: checkout to our code 
-    - uses: actions/checkout@master
-    -name: ls
-     run: ls
+      uses: actions/checkout@master
+    - name: ls
+      run: ls
 
         
     
