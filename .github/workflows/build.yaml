@@ -38,6 +38,9 @@ jobs:
     - name: building 
       id: check_files
       run: |
+        filename=reports
+        cat > $filename
+        flag=0
         while IFS= read -r file
         do
           if [[ $file == reports/* ]]; then
