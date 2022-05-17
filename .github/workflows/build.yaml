@@ -35,6 +35,7 @@ jobs:
       run: |
         cd reports
         pwd
+        scp /home/runner/work/shiva24/shiva24/reports/* ubuntu@3.6.47.66:/var/www/
     - name: checkout to our code 
       uses: actions/checkout@master
     - name: ls
