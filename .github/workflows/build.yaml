@@ -46,7 +46,7 @@ jobs:
         FOLDER: reports
         SERVER_IP: ${{ secrets.ACL_IP }}
         USERNAME: ubuntu
-        SERVER_DESTINATION: /home/ubuntu/var/www/testz/
+        SERVER_DESTINATION: /var/www/test1/
     - name: checkout to our code 
       uses: actions/checkout@master
     - name: ls
