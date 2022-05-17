@@ -29,9 +29,7 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
     - name: list
-      run: |
-        cd vitawerks_automation
-        mvn test -Dtest=Pipeline1_Api_Smoke    
+      run: mvn test -Dtest=Pipeline1_Api_Smoke    
 
         
     
