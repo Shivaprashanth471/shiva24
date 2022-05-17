@@ -56,7 +56,7 @@ jobs:
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       with:
-        template: plain1
+        # template: plain1
         icon_url: test2.teric.services/reports/${{ github.sha }}/${{ github.sha }}/index.html
 
         
