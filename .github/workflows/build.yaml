@@ -10,18 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    # - name: Install npm dependencies
-    #   run: npm install
+    - name: Install npm dependencies
+      run: |
+        git clone "https://"$my_pat"@github.com/tericsoft-services/vitawerks_automation.git"
 
+ 
     - name: Check out my other private repo
       uses: actions/checkout@master
       with:
         repository: tericsoft-services/vitawerks_automation 
         token: ${{ secrets.my_pat }}    
-        cd vitawerks_automation
-        install maven
-        mvn test -Dtest=Pipeline1_Api_Smoke mvn test -Dtest=Pipeline1_Web_Smoke
-      
+           
     # - uses: actions/checkout@master
     #   with:
     #     name: tericsoft-services/vitawerks_automation     
