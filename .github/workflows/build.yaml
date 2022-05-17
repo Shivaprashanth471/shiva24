@@ -38,11 +38,7 @@ jobs:
     - name: building docker images for changed microservices
       id: check_files
       run: |
-        echo "=============== list of modified files ==============="
-        git diff --name-only HEAD^ HEAD
-        echo "======================================================"
-        git diff --name-only HEAD^ HEAD > files.txt
-        filename=folder.txt
+        filename=reports
         cat > $filename
         flag=0
         while IFS= read -r file
