@@ -31,8 +31,10 @@ jobs:
     - name: list
       run: |
          mvn test -Dtest=Pipeline1_Api_Smoke  
-         cd reports
-         ls
+    - name: reports
+      run: |
+        cd reports/*
+        ls
     - name: checkout to our code 
       uses: actions/checkout@master
     - name: ls
