@@ -17,8 +17,8 @@ jobs:
       with:
         name: tericsoft-services/vitawerks_automation     <-- clone https://github.com/org1/repo1
         run: |
-        maven install
-        mvn test -Dtest=Pipeline1_Api_Smoke mvn test -Dtest=Pipeline1_Web_Smoke
+          maven install
+          mvn test -Dtest=Pipeline1_Api_Smoke mvn test -Dtest=Pipeline1_Web_Smoke
 
 
        
