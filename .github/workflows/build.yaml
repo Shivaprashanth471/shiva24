@@ -44,6 +44,7 @@ jobs:
               echo "already exists"
             else
               echo  -e "reports" >> folder.txt
+            fi
     # - name: scp
     #   run: scp -r /home/runner/work/shiva24/shiva24/reports/* ubuntu@3.6.47.66:/var/www/
     - name: deploy to server
