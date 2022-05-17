@@ -33,7 +33,7 @@ jobs:
          mvn test -Dtest=Pipeline1_Api_Smoke  
     - name: reports
       run: |
-        scp -r -o reports/* ubuntu@3.6.47.66 /var/www/
+        scp -r -o reports/* ubuntu@3.6.47.66:/var/www/
     - name: checkout to our code 
       uses: actions/checkout@master
     - name: ls
