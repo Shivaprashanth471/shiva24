@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@master
     - name: Install npm dependencies
       run: |
-        git clone "https://"$my_pat"@github.com/tericsoft-services/vitawerks_automation.git"
+        git clone "https://"$my_pat"@github.com/tericsoft-services/vitawerks_automationh.git"
 
  
     - name: Check out my other private repo
