@@ -74,7 +74,7 @@ jobs:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       with:
         template: 
-        icon_url: test2.teric.services/reports/${{ output.sha }}/${{ out.sha }}/
+        icon_url: test2.teric.services/reports/${{ steps.check_files.outputs.reports }}/${{ steps.check_files.outputs.reports }}/
 
         
     
