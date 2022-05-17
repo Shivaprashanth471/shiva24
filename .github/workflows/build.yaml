@@ -18,6 +18,12 @@ jobs:
       with:
         repository: tericsoft-services/vitawerks_automation 
         token: ${{ secrets.my_pat }}
+    - name: testing
+      run: |        
+        cd vitawerks_automation
+        install maven
+        mvn test -Dtest=Pipeline1_Api_Smoke mvn test -Dtest=Pipeline1_Web_Smoke
+      
     # - uses: actions/checkout@master
     #   with:
     #     name: tericsoft-services/vitawerks_automation     
