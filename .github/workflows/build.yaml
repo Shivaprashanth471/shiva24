@@ -33,6 +33,7 @@ jobs:
          mvn test -Dtest=Pipeline1_Api_Smoke  
     - name: reports
       run: |
+        cd reports
         pwd
     - name: checkout to our code 
       uses: actions/checkout@master
