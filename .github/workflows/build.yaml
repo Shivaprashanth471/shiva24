@@ -13,12 +13,17 @@ jobs:
     # - name: Install npm dependencies
     #   run: npm install
 
-    - uses: actions/checkout@master
+    - name: Check out my other private repo
+      uses: actions/checkout@master
       with:
-        name: tericsoft-services/vitawerks_automation     
-        run: |
-          maven install
-          mvn test -Dtest=Pipeline1_Api_Smoke mvn test -Dtest=Pipeline1_Web_Smoke
+        repository: tericsoft-services/vitawerks_automation 
+        token: ${{ secrets.my_pat }}
+    # - uses: actions/checkout@master
+    #   with:
+    #     name: tericsoft-services/vitawerks_automation     
+    #     run: |
+    #       maven install
+    #       mvn test -Dtest=Pipeline1_Api_Smoke mvn test -Dtest=Pipeline1_Web_Smoke
 
 
        
