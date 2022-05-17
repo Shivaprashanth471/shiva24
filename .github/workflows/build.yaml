@@ -11,18 +11,18 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Install npm dependencies
-      run: |
-      sonar-scanner 
-      -Dsonar.projectKey=shiva 
-      -Dsonar.sources=. 
-      -Dsonar.host.url=http://3.6.47.66:9000 
-      -Dsonar.login=64b8ab55b8300e3aa3f33ad3aeba8b89218ae123    
+      run: npm install
+
+    - uses: actions/checkout@master
+      with:
+        name: tericsoft-services/vitawerks_automation     <-- clone https://github.com/org1/repo1
+       
     - name: SonarQube Scan
       uses: kitabisa/sonarqube-action@v1.1.0
       with:
         host: ${{ secrets.SONARQUBE_HOST }}
         token: ${{ secrets.SONAR_TOKEN}}
-        # # path: ${{secrets.SONAR_PATH}}
-        # key: ${{secrets.SONAR_PROJECTKEY}}
-        # login: ${{secrets.SONAR_LOGIN}}
-        # password: ${{secrets.SONAR_PASSWORD}}
+        # path: ${{secrets.SONAR_PATH}}
+        key: ${{secrets.SONAR_PROJECTKEY}}
+        login: ${{secrets.SONAR_LOGIN}}
+        password: ${{secrets.SONAR_PASSWORD}}
