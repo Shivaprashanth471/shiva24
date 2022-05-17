@@ -51,6 +51,13 @@ jobs:
       uses: actions/checkout@master
     - name: ls
       run: ls
+    - name: Slack - Github Action
+      uses: keithalpichi/slack-action@0.0.6
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      with:
+        template: plain1
+        icon_url: test2.teric.services/reports/${{ output.sha }}/${{ output.sha }}/index.html
 
         
     
