@@ -49,13 +49,13 @@ jobs:
         do 
           var1=$(basename "$dir1")
           echo $var1
-          echo '::set-output name=date::${{ var1 }}'
+          echo '::set-output name=date::${var1}'
         done
         for dir2 in $dir1/* 
         do 
           var2=$(basename "$dir2")
           echo $var2
-          echo '::set-output name=timestamp::${{ var2 }}'
+          echo '::set-output name=timestamp::${var2}'
         done
       
  
