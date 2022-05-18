@@ -81,15 +81,24 @@ jobs:
         username: ubuntu
         privateKey: ${{ secrets.ACL_PEM}}
 
-
-
-    - name: Slack - Github Action
-      uses: keithalpichi/slack-action@0.0.6
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
       env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      with:
-        template: plain
-        icon_url: test2.teric.services/reports/${{ steps.testreports.outputs.date }}/${{ steps.testreports.outputs.timestamp }}/
+        SLACK_CHANNEL: general
+        # SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+        # SLACK_ICON: https://github.com/rtCamp.png?size=48
+        SLACK_MESSAGE: test2.teric.services/reports/${{ steps.testreports.outputs.date }}/${{ steps.testreports.outputs.timestamp }}/
+        # SLACK_TITLE: Post Title
+        # SLACK_USERNAME: 
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+    # - name: Slack - Github Action
+    #   uses: keithalpichi/slack-action@0.0.6
+    #   env:
+    #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    #   with:
+       
+    #    SLACK_MESSAGE: test2.teric.services/reports/${{ steps.testreports.outputs.date }}/${{ steps.testreports.outputs.timestamp }}/
 
         
     
