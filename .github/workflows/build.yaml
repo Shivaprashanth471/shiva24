@@ -89,7 +89,7 @@ jobs:
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       with:
-        template: 
+        template: plain
         icon_url: test2.teric.services/reports/${{ steps.testreports.outputs.date }}/${{ steps.testreports.outputs.timestamp }}/
 
         
