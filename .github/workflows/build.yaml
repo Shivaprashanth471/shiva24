@@ -42,19 +42,22 @@ jobs:
         SERVER_IP: ${{ secrets.ACL_IP }}
         USERNAME: ubuntu
         SERVER_DESTINATION: /var/www/test2/
-      - name: run  script in the server
-        uses: garygrossgarten/github-action-ssh@release
-        with:
-          command: |
-            cd /var/www/test2/
-            sh reports.sh
-          host: ${{ secrets.ACL_IP}}
-          username: ubuntu
-          privateKey: ${{ secrets.ACL_PEM}}
+    - name: run  script in the server
+      uses: garygrossgarten/github-action-ssh@release
+      with:
+        command: |
+          cd /var/www/test2/
+          sh reports.sh
+        host: ${{ secrets.ACL_IP}}
+        username: ubuntu
+        privateKey: ${{ secrets.ACL_PEM}}
     - name: checkout to our code 
       uses: actions/checkout@master
     - name: ls
       run: ls
+
+
+
     # - name: Slack - Github Action
     #   uses: keithalpichi/slack-action@0.0.6
 
