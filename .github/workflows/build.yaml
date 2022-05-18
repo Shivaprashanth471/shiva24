@@ -30,8 +30,7 @@ jobs:
         restore-keys: ${{ runner.os }}-m2
     - name: list
       run: |
-         mvn test -Dtest=Pipeline1_Api_Smoke 
-    
+        mvn test -Dtest=Pipeline1_Api_Smoke 
     
     - name: deploy to server
       uses: AEnterprise/rsync-deploy@v1.0
