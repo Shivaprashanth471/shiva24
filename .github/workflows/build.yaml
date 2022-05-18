@@ -30,20 +30,8 @@ jobs:
         restore-keys: ${{ runner.os }}-m2
     - name: list
       run: |
-         mvn test -Dtest=Pipeline1_Api_Smoke  
-    - name: reports
-      run: |
-        cd reports
-        while IFS= read -r file
-        do
-          if [[ $file == /* ]]; then
-            if grep -q "reports" "$filename"; then
-              echo "already exists"
-            else
-              echo  -e "reports" >> folder.txt
-        fi
-    # - name: scp
-    #   run: scp -r /home/runner/work/shiva24/shiva24/reports/* ubuntu@3.6.47.66:/var/www/
+         mvn test -Dtest=Pipeline1_Api_Smoke 
+    
     - name: deploy to server
       uses: AEnterprise/rsync-deploy@v1.0
       env:
@@ -54,18 +42,27 @@ jobs:
         SERVER_IP: ${{ secrets.ACL_IP }}
         USERNAME: ubuntu
         SERVER_DESTINATION: /var/www/test2/
+      - name: run  script in the server
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: |
+            cd /var/www/test2/
+            sh reports.sh
+          host: ${{ secrets.ACL_IP}}
+          username: ubuntu
+          privateKey: ${{ secrets.ACL_PEM}}
     - name: checkout to our code 
       uses: actions/checkout@master
     - name: ls
       run: ls
-    - name: Slack - Github Action
-      uses: keithalpichi/slack-action@0.0.6
+    # - name: Slack - Github Action
+    #   uses: keithalpichi/slack-action@0.0.6
 
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      with:
-        template: 
-        icon_url: test2.teric.services/reports/${{ steps.check_files.outputs.reports }}/${{ steps.check_files.outputs.reports }}/
+      # env:
+      #   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      # with:
+      #   template: 
+      #   icon_url: test2.teric.services/reports/${{ steps.h.outputs.reports }}/${{ steps.check_files.outputs.reports }}/
 
         
     
