@@ -34,17 +34,26 @@ jobs:
     - name: reports
       run: |
         cd reports
+        echo "=============== list of modified files ==============="
+        git diff --name-only HEAD^ HEAD
+        echo "======================================================"
+        git diff --name-only HEAD^ HEAD > files.txt
         filename=folder.txt
         cat > $filename
         flag=0
-        while IFS= read -r file
-        do
-          if [[ $file == reports/* ]]; then
-            if grep -q "reports" "$filename"; then
-              echo "already exists"
-            else
-              echo  -e "reports" >> folder.txt
-            fi
+
+    # -name: text
+        # filename= date  
+        # cat > $filename
+        # flag=0
+        # while IFS= read -r file
+        # do
+        #   if [[ $file == /* ]]; then
+        #     if grep -q "reports" "$filename"; then
+        #       echo "already exists"
+        #     else
+        #       echo  -e "reports" >> folder.txt
+        #     fi
     # - name: scp
     #   run: scp -r /home/runner/work/shiva24/shiva24/reports/* ubuntu@3.6.47.66:/var/www/
     - name: deploy to server
