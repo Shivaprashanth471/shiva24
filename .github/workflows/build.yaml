@@ -32,6 +32,7 @@ jobs:
       run: |
          mvn test -Dtest=Pipeline1_Api_Smoke 
     
+    
     - name: deploy to server
       uses: AEnterprise/rsync-deploy@v1.0
       env:
@@ -42,6 +43,21 @@ jobs:
         SERVER_IP: ${{ secrets.ACL_IP }}
         USERNAME: ubuntu
         SERVER_DESTINATION: /var/www/test2/
+      - name: run script
+        id: testreports
+        run: | 
+          for dir1 in ./reports/* 
+          do 
+            var1=$(basename "$dir1")
+            echo '::set-output name=date::var1'
+          done
+          for dir2 in $dir1/* 
+          do 
+            var2=$(basename "$dir2")
+            echo '::set-output name=timestamp::var2'
+          done
+      
+ 
     - name: run  script in the server
       uses: garygrossgarten/github-action-ssh@release
       with:
@@ -51,21 +67,30 @@ jobs:
         host: ${{ secrets.ACL_IP}}
         username: ubuntu
         privateKey: ${{ secrets.ACL_PEM}}
-    - name: checkout to our code 
-      uses: actions/checkout@master
-    - name: ls
-      run: ls
+
+    # - name: checkout to our code 
+    #   uses: actions/checkout@master
+    # - name: ls
+    #   run: ls 
+    - name: run  script in the server
+      uses: garygrossgarten/github-action-ssh@release
+      with:
+        command: |
+          cd /var/www/test2/
+          sh reports.sh
+        host: ${{ secrets.ACL_IP}}
+        username: ubuntu
+        privateKey: ${{ secrets.ACL_PEM}}
 
 
 
-    # - name: Slack - Github Action
-    #   uses: keithalpichi/slack-action@0.0.6
-
-      # env:
-      #   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      # with:
-      #   template: 
-      #   icon_url: test2.teric.services/reports/${{ steps.h.outputs.reports }}/${{ steps.check_files.outputs.reports }}/
+    - name: Slack - Github Action
+      uses: keithalpichi/slack-action@0.0.6
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      with:
+        template: 
+        icon_url: test2.teric.services/reports/${{ steps.testreports.outputs.date }}/${{ steps.testreports.outputs.timestamp }}/
 
         
     
