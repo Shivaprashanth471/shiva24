@@ -48,12 +48,12 @@ jobs:
         for dir1 in ./reports/* 
         do 
           var1=$(basename "$dir1")
-          echo '::set-output name=date::var1'
+          echo '::set-output name=date::$var1'
         done
         for dir2 in $dir1/* 
         do 
           var2=$(basename "$dir2")
-          echo '::set-output name=timestamp::var2'
+          echo '::set-output name=timestamp::$var2'
         done
       
  
