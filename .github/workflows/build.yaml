@@ -29,10 +29,14 @@ jobs:
     #   uses: browser-actions/setup-chromium@latest
     # - name: chrome version
     #   run: chrome --version 
-    - name:  Install Google Chrome 
-      run:   |
-              sudo chmod +x ./scripts/InstallChrome.sh
-                          ./scripts/InstallChrome.sh              
+    - name: Install Google Chrome # Using shell script to install Google Chrome
+      run: |
+       chmod +x ./scripts/InstallChrome.sh
+        ./scripts/InstallChrome.sh      
+    # - name:  Install Google Chrome 
+    #   run:   |
+    #           sudo chmod +x ./scripts/InstallChrome.sh
+    #                       ./scripts/InstallChrome.sh              
     - name: list
       run: |
         mvn test -Dtest=Pipeline1_Web_Smoke
