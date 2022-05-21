@@ -30,7 +30,7 @@ jobs:
         restore-keys: ${{ runner.os }}-m2
     - name: list
       run: |
-        mvn test -Dtest=Pipeline1_Api_Smoke 
+        mvn test -Dtest=Pipeline2_Api_Regression
     
     - name: deploy to server
       uses: AEnterprise/rsync-deploy@v1.0
@@ -92,7 +92,34 @@ jobs:
         SLACK_MESSAGE: test2.teric.services/reports/${{ steps.testreports.outputs.date }}/${{ steps.testreports.outputs.timestamp }}/
         # SLACK_TITLE: Post Title
         # SLACK_USERNAME: 
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     # - name: Slack - Github Action
     #   uses: keithalpichi/slack-action@0.0.6
