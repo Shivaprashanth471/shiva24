@@ -31,7 +31,7 @@ jobs:
     #   run: chrome --version 
     - name:  Install Google Chrome 
       run:   |
-              sudo chmod 777 ./scripts/InstallChrome.sh
+              sudo chmod +x ./scripts/InstallChrome.sh
                           ./scripts/InstallChrome.sh              
     - name: list
       run: |
