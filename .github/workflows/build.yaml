@@ -9,8 +9,7 @@ jobs:
     name: SonarQube Trigger
     runs-on: ubuntu-latest
     steps:
-    - uses: browser-actions/setup-chromium@latest
-    - run: chrome --version
+
     - name: Check out my other private repo
       uses: actions/checkout@master
       with:
@@ -26,7 +25,9 @@ jobs:
         path: ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
-        
+    - name: chrome
+      uses: browser-actions/setup-chromium@latest
+      run: chrome --version               
     - name: list
       run: |
         mvn test -Dtest=Pipeline1_Web_Smoke
