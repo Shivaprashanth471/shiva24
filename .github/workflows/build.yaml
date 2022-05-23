@@ -41,8 +41,8 @@ jobs:
     #   run: chrome --version 
     - name: Start selenoid
       uses: Xotabu4/selenoid-github-action@v2
-    - uses: actions/checkout@v1
-      run: npm ci  
+    # - uses: actions/checkout@v1
+    #   run: npm ci  
     
     # - name: Install Google Chrome # Using shell script to install Google Chrome
     #   run: |
