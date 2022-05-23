@@ -15,6 +15,8 @@ jobs:
       with:
         repository: tericsoft-services/vitawerks_automation 
         token: ${{ secrets.my_pat }}
+    - name: check
+      run: mvn test -Dtest=Pipeline1_Web_Smoke
     - name: Setup Maven
       uses: stCarolas/setup-maven@v4.3
 
