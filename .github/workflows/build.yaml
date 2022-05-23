@@ -35,10 +35,10 @@ jobs:
         path: ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
-    - name: chrome
-      uses: browser-actions/setup-chromium@latest
-    - name: chrome version
-      run: chrome --version 
+    # - name: chrome
+    #   uses: browser-actions/setup-chromium@latest
+    # - name: chrome version
+    #   run: chrome --version 
     - name: Start selenoid
       uses: Xotabu4/selenoid-github-action@v2
     - uses: actions/checkout@v1
@@ -76,12 +76,12 @@ jobs:
     - name: Prepare Selenium
       # https://github.com/marketplace/actions/setup-chromedriver
       uses: nanasess/setup-chromedriver@master
-    - name: Launch browser
-      run: |
-        google-chrome --version
-        export DISPLAY=:99
-        chromedriver --url-base=/wd/hub &
-        sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional, disables headless mode
+    # - name: Launch browser
+    #   run: |
+    #     google-chrome --version
+    #     export DISPLAY=:99
+    #     chromedriver --url-base=/wd/hub &
+    #     sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional, disables headless mode
     - name: Run tests  
       run: mvn test -Dtest=Pipeline1_Web_Smoke  
     - name: deploy to server
