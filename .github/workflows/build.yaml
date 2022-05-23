@@ -9,10 +9,10 @@ jobs:
     name: SonarQube Trigger
     runs-on: ubuntu-latest
     steps:
-    - name: Install Google Chrome # Using shell script to install Google Chrome
-      run: |
-        chmod +x InstallChrome.sh
-        InstallChrome.sh
+    # - name: Install Google Chrome # Using shell script to install Google Chrome
+    #   run: |
+    #     chmod +x InstallChrome.sh
+    #     InstallChrome.sh
     - name: Check out my other private repo
       uses: actions/checkout@master
       with:
