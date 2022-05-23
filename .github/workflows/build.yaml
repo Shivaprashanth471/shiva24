@@ -28,10 +28,10 @@ jobs:
         path: ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
-    # - name: chrome
-    #   uses: browser-actions/setup-chromium@latest
-    # - name: chrome version
-    #   run: chrome --version 
+    - name: chrome
+      uses: browser-actions/setup-chromium@latest
+    - name: chrome version
+      run: chrome --version 
     # - name: Install Google Chrome # Using shell script to install Google Chrome
     #   run: |
     #    chmod +x ./scripts/InstallChrome.sh
@@ -50,10 +50,7 @@ jobs:
     #     export DISPLAY=:99
     #     chromedriver --url-base=/wd/hub &
     #     sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional    
-    # - name: chrome
-    #   run: |
-    #     sudo apt-get update 
-    #     sudo apt-get install google-chrome-stable             
+            
 
     # - name: list
     #   run: |
