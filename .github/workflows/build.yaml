@@ -15,12 +15,12 @@ jobs:
       with:
         repository: tericsoft-services/vitawerks_automation 
         token: ${{ secrets.my_pat }}
-    - name: chrome
-      run: |
-        cd /usr/local/bin/
-        ls
-    - name: check
-      run: mvn test -Dtest=Pipeline1_Web_Smoke
+    # - name: chrome
+    #   run: |
+    #     cd /usr/local/bin/
+    #     ls
+    # - name: check
+    #   run: mvn test -Dtest=Pipeline1_Web_Smoke
 
     - name: Setup Maven
       uses: stCarolas/setup-maven@v4.3
@@ -39,6 +39,12 @@ jobs:
       uses: browser-actions/setup-chromium@latest
     - name: chrome version
       run: chrome --version 
+    - name: Start selenoid
+      uses: Xotabu4/selenoid-github-action@v2
+    - uses: actions/checkout@v1
+    - run: npm ci  
+    - name: Run tests
+      run: npm test      
     # - name: Install Google Chrome # Using shell script to install Google Chrome
     #   run: |
     #    chmod +x ./scripts/InstallChrome.sh
