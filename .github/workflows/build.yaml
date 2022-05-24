@@ -36,7 +36,7 @@ jobs:
     #     key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
     #     restore-keys: ${{ runner.os }}-m2
     - name: Run tests  
-      run: mvn test -Dtest=Pipeline1_Web_Smoke  
+      run: mvn test -Dtest=Pipeline3_Api_Smoke_Fail 
     - name: deploy to server
       if: always()
       uses: AEnterprise/rsync-deploy@v1.0
