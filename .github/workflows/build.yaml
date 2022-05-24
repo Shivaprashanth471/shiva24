@@ -95,7 +95,9 @@ jobs:
     #     chromedriver --url-base=/wd/hub &
     #     sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional, disables headless mode
     - name: Run tests  
-      run: mvn test -Dtest=Pipeline1_Web_Smoke  
+      run: |
+        cd vitawerks_automation
+        mvn test -Dtest=Pipeline1_Web_Smoke  
     - name: deploy to server
       uses: AEnterprise/rsync-deploy@v1.0
       env:
