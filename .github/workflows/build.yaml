@@ -21,7 +21,7 @@ jobs:
     - name: check pom file
       run: |
         ls
-        sudo nano pom.xml        
+        
     # - name: chrome
     #   run: |
     #     cd /usr/local/bin/
