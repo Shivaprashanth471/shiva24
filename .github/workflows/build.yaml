@@ -33,6 +33,9 @@ jobs:
       run: |
         chmod +x ./InstallChrome.sh
         ./InstallChrome.sh
+    - name: Apache Maven Build Automation for Java Project
+      uses: NishkarshRaj/Maven_Actions@0.1
+
 
     # - name: Setup Maven
     #   uses: stCarolas/setup-maven@v4.3
