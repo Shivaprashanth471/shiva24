@@ -18,6 +18,10 @@ jobs:
       with:
         repository: tericsoft-services/vitawerks_automation 
         token: ${{ secrets.my_pat }}
+    - name: check pom file
+      run: |
+        ls
+        sudo nano pom.xml        
     # - name: chrome
     #   run: |
     #     cd /usr/local/bin/
