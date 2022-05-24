@@ -24,7 +24,7 @@ jobs:
     #     ls
     # - name: check
     #   run: mvn test -Dtest=Pipeline1_Web_Smoke
-    - uses: actions/checkout@v2 # Checkout the code
+    # - uses: actions/checkout@v2 # Checkout the code
     - name: Set up JDK 1.8
       uses: actions/setup-java@v1 # Setup JAVA
       with:
