@@ -3,10 +3,9 @@ on:
     branches:
       - dev        # The default branch
       - branch-* 
-name: Main Workflow
+name: test cases
 jobs:
-  sonarQubeTrigger:
-    name: SonarQube Trigger
+  build:
     runs-on: ubuntu-latest
     steps:
     - name: Check out my other private repo
@@ -29,10 +28,16 @@ jobs:
 
 
 
+    # - name: Cache Maven packages
+    #   uses: actions/cache@v1
+    #   with:
+    #     path: ~/.m2
+    #     key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+    #     restore-keys: ${{ runner.os }}-m2
     - name: Run tests  
-      run: mvn test -Dtest=Pipeline3_Api_Smoke_Fail 
+      run: mvn test -Dtest=Pipeline1_Web_Smoke  
     - name: deploy to server
-
+      if: always()
       uses: AEnterprise/rsync-deploy@v1.0
       env:
         DEPLOY_KEY: ${{ secrets.ACL_PEM }}
@@ -43,7 +48,7 @@ jobs:
         USERNAME: ubuntu
         SERVER_DESTINATION: /var/www/test2/
     - name: run script
-
+      if: always()
       id: testreports
       run: | 
         for dir1 in ./reports/* 
@@ -60,7 +65,7 @@ jobs:
         done
       
     - name: run  script in the server
-
+      if: always()
       uses: garygrossgarten/github-action-ssh@release
       with:
         command: |
@@ -70,7 +75,7 @@ jobs:
         username: ubuntu
         privateKey: ${{ secrets.ACL_PEM}}
     - name: run  script in the server
-
+      if: always()
       uses: garygrossgarten/github-action-ssh@release
       with:
         command: |
@@ -81,7 +86,7 @@ jobs:
         privateKey: ${{ secrets.ACL_PEM}}
 
     - name: Slack Notification
-
+      if: always()
       uses: rtCamp/action-slack-notify@v2
       env:
         SLACK_CHANNEL: general
