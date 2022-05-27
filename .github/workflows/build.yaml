@@ -1,5 +1,6 @@
 on:
   push:
+  
     branches:
       - master        # The default branch
       - branch-*    # The other branches to be analyzed
@@ -20,4 +21,3 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 
-          
