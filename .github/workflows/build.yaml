@@ -1,5 +1,6 @@
 on:
   push:
+  
     branches:
       - master        # The default branch
       - branch-*    # The other branches to be analyzed
@@ -18,3 +19,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: install dependencies
+        run: yarn install
+      - name: build
+        run: yarn build
+      - name: Notify dedicated teams channel
+        if: always()
+        uses: jdcargile/ms-teams-notification@v1.3
+        with:
+          github-token: ${{ github.token }} # this will use the runner's token.
+          # webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
+          ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          notification-summary: deployed succesfully
+          notification-color: 17a2b8
+          timezone: Asia/Singapore
