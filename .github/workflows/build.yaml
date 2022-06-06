@@ -38,4 +38,5 @@ jobs:
         uses: skitionek/notify-microsoft-teams@master
         if: failure()
         with:
-          webhook_url: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}          
+          webhook_url: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          notification-summary: deployment failed          
