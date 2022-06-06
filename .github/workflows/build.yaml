@@ -33,13 +33,10 @@ jobs:
           # notification-summary: deployed succesfully
           notification-color: 17a2b8
           timezone: Asia/Singapore
-        if_failure:
       - name: Only if failure
-      runs-on: ubuntu-18.04
-      steps:
-        - uses: actions/checkout@master
-        - name: Microsoft Teams Notification
-          uses: skitionek/notify-microsoft-teams@master
-          if: failure()
-          with:
-            webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}          
+        uses: actions/checkout@master
+      - name: Microsoft Teams Notification
+        uses: skitionek/notify-microsoft-teams@master
+        if: failure()
+        with:
+          webhook_url: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}          
