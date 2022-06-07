@@ -29,7 +29,7 @@ jobs:
           github-token: ${{ github.token }} # this will use the runner's token.
           # webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
           ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-          # notification-summary: deployed succesfully
+          notification-summary: deployed succesfully
           notification-color: 17a2b8
           timezone: Asia/Singapore
       - name: Only if failure
@@ -39,7 +39,7 @@ jobs:
         if: failure()
         with:
           webhook_url: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-          notification-summary: deployment failed          
+          # notification-summary: deployment failed          
 
 # jobs:
 #   success:
