@@ -32,8 +32,8 @@ jobs:
           notification-summary: deployed succesfully
           notification-color: 17a2b8
           timezone: Asia/Singapore
-      - name: Only if failure
-        uses: actions/checkout@master
+      # - name: Only if failure
+      #   uses: actions/checkout@master
       - name: Microsoft Teams Notification
         uses: skitionek/notify-microsoft-teams@master
         if: failure()
