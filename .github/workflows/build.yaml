@@ -21,8 +21,8 @@ jobs:
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: install dependencies
         run: yarn install
-      # - name: build
-      #   run: yarn build
+      - name: build
+        run: yarn build
       - name: Notify dedicated teams channel
         uses: jdcargile/ms-teams-notification@v1.3
         with:
@@ -38,8 +38,11 @@ jobs:
         uses: skitionek/notify-microsoft-teams@master
         if: failure()
         with:
+          github-token: ${{ github.token }}
           webhook_url: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-          # notification-summary: deployment failed          
+          notification-summary: deployment failed  
+          notification-color: 17a2b8
+          timezone: Asia/Singapore                  
 
 # jobs:
 #   success:
