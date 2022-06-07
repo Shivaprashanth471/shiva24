@@ -50,12 +50,7 @@ jobs:
         with:
           # github-token: ${{ github.token }}
           webhook_url: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-          raw: >-
-            {
-              "@type": "MessageCard",
-              "@context": "http://schema.org/extensions",
-              "title": "No ${variables} avaliable in here"
-            }          
+          overwrite: "{title: failed }"      
           # notification-summary: deployment failed  
           # notification-color: 17a2b8
           # timezone: Asia/Singapore     
