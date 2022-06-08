@@ -35,6 +35,7 @@ jobs:
       #     SERVER_DESTINATION: /home/ec2-user      
       - name: Notify dedicated teams channel
         uses: jdcargile/ms-teams-notification@v1.3
+
         with:
           github-token: ${{ github.token }} # this will use the runner's token.
           # webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
@@ -52,7 +53,7 @@ jobs:
           # webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
           ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
           notification-summary: deployment failed
-          notification-color: 17a2b8
+          notification-color:  28a745
           timezone: Asia/Singapore      
       # - name: Microsoft Teams Notification
       #   uses: skitionek/notify-microsoft-teams@master
