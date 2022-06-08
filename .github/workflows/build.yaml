@@ -44,16 +44,26 @@ jobs:
           timezone: Asia/Singapore
       # - name: Only if failure
       #   uses: actions/checkout@master
-      - name: Microsoft Teams Notification
-        uses: skitionek/notify-microsoft-teams@master
-        if: failure()
+      - name: Notify dedicated teams channel
+        uses: jdcargile/ms-teams-notification@v1.3
+        if: failure()        
         with:
-          github-token: ${{ github.token }}
-          webhook_url: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-          # overwrite: "{title: `Overwrote title in ${workflow_link}`}"  
-          notification-summary: deployment failed  
+          github-token: ${{ github.token }} # this will use the runner's token.
+          # webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
+          ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          notification-summary: deployment failed
           notification-color: 17a2b8
-          timezone: Asia/Singapore   
+          timezone: Asia/Singapore      
+      # - name: Microsoft Teams Notification
+      #   uses: skitionek/notify-microsoft-teams@master
+      #   if: failure()
+      #   with:
+      #     github-token: ${{ github.token }}
+      #     webhook_url: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+      #     # overwrite: "{title: `Overwrote title in ${workflow_link}`}"  
+      #     notification-summary: deployment failed  
+      #     notification-color: 17a2b8
+      #     timezone: Asia/Singapore   
           # webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
           # needs: ${{ toJson(needs) }}
           # job: ${{ toJson(job) }}
