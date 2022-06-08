@@ -48,17 +48,17 @@ jobs:
         uses: skitionek/notify-microsoft-teams@master
         if: failure()
         with:
-          # github-token: ${{ github.token }}
+          github-token: ${{ github.token }}
           webhook_url: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
           # overwrite: "{title: `Overwrote title in ${workflow_link}`}"  
-          # notification-summary: deployment failed  
-          # notification-color: 17a2b8
-          # timezone: Asia/Singapore   
+          notification-summary: deployment failed  
+          notification-color: 17a2b8
+          timezone: Asia/Singapore   
           # webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
-          needs: ${{ toJson(needs) }}
-          job: ${{ toJson(job) }}
-          steps: ${{ toJson(steps) }}
-          dry_run: True            
+          # needs: ${{ toJson(needs) }}
+          # job: ${{ toJson(job) }}
+          # steps: ${{ toJson(steps) }}
+          # dry_run: True            
 
   #     - name: Microsoft Teams Notification
   #       uses: skitionek/notify-microsoft-teams@master
