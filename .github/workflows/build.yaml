@@ -23,16 +23,16 @@ jobs:
         run: yarn install
       # - name: test
       #   run: yarn build
-      - name: deploy to server
-        uses: AEnterprise/rsync-deploy@v1.0
-        env:
-          DEPLOY_KEY: ${{ secrets.ACL_PEM }}
-          ARGS: "-e -c -r --delete"
-          SERVER_PORT: 22
-          FOLDER: ./target/acl-ui-dev1.war
-          SERVER_IP: ${{ secrets.ACL_IP }}
-          USERNAME: ec2-user
-          SERVER_DESTINATION: /home/ec2-user      
+      # - name: deploy to server
+      #   uses: AEnterprise/rsync-deploy@v1.0
+      #   env:
+      #     DEPLOY_KEY: ${{ secrets.ACL_PEM }}
+      #     ARGS: "-e -c -r --delete"
+      #     SERVER_PORT: 22
+      #     FOLDER: ./target/acl-ui-dev1.war
+      #     SERVER_IP: ${{ secrets.ACL_IP }}
+      #     USERNAME: ec2-user
+      #     SERVER_DESTINATION: /home/ec2-user      
       - name: Notify dedicated teams channel
         uses: jdcargile/ms-teams-notification@v1.3
         with:
