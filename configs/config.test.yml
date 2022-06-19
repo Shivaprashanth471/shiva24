@@ -2,3 +2,10 @@ custom:
   region: ap-south-1
   profile: vw
   stage: test
+
+
+
+custom:
+  region: ap-south-1
+  profile: vw
+  stage: test
